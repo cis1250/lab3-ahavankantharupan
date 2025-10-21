@@ -6,34 +6,41 @@
 # Validate that the input is a positive integer.
 # Use a for loop to print the Fibonacci sequence up to that many terms.
 
-def get_positive_integer(prompt="Enter the number of terms: "):
-    while True:
-        try:
-            user_input = input(prompt)
-            number = int(user_input)
-            if number > 0:
-                return number
-            else:
-                print("Please enter a number greater than 0.")
-        except ValueError:
-            print("Invalid input. Please enter a valid integer.")
+# Fibonacci Sequence Generator (Basic Version)
+
+def get_positive_integer(prompt):
+    user_input = input(prompt)
+
+    # Repeat until a valid positive integer is entered
+    while not user_input.isdigit() or int(user_input) <= 0:
+        print("Please enter a number greater than 0.")
+        user_input = input(prompt)
+
+    return int(user_input)
 
 def generate_fibonacci(x):
     fib_sequence = []
-    a, b = 0, 1
-    for _ in range(x):
+    a = 0
+    b = 1
+
+    for i in range(x):
         fib_sequence.append(a)
-        a, b = b, a + b
+        temp = a + b
+        a = b
+        b = temp
+
     return fib_sequence
 
 def main():
     print("Fibonacci Sequence Generator")
-    num_terms = get_positive_integer()
+    num_terms = get_positive_integer("Enter the number of terms: ")
 
-    print(f"\nFirst {num_terms} terms of the Fibonacci sequence:")
+    print("\nFirst", num_terms, "terms of the Fibonacci sequence:")
     fibonacci = generate_fibonacci(num_terms)
+
     for num in fibonacci:
         print(num)
 
-if __name__ == "__main__":
-    main()
+# Run the program
+main()
+
