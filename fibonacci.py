@@ -11,7 +11,7 @@
 def get_positive_integer(prompt):
     user_input = input(prompt)
 
-    # Repeat until a valid positive integer is entered
+    # Repeat until a valid positive integer is entered will not except a negeative number 
     while not user_input.isdigit() or int(user_input) <= 0:
         print("Please enter a number greater than 0.")
         user_input = input(prompt)
@@ -20,14 +20,14 @@ def get_positive_integer(prompt):
 
 def generate_fibonacci(x):
     fib_sequence = []
-    a = 0
-    b = 1
+    num1= 0
+    num2= 1
 
     for i in range(x):
         fib_sequence.append(a)
-        temp = a + b
-        a = b
-        b = temp
+        temp = num1 + num2
+        num1 = num2
+        num2 = temp
 
     return fib_sequence
 
